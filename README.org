@@ -44,6 +44,13 @@ Or quit being such a fancy pants and just use a heckin' alias.
 alias doc='~/src/doc/doc'
 #+end_src
 
+** Usage
+
+This is totally unexpected, but you run it with your terminal.
+
+#+begin_src bash
+doc
+#+end_src
 ** Configuration
 
 Set the path to your precious documents.
@@ -68,11 +75,3 @@ four --> error
 
 #+RESULTS:
 [[file:images/docs-path.png]]
-
-** Usage
-
-This is totally unexpected, but you run it with your terminal.
-
-#+begin_src bash
-doc
-#+end_src
