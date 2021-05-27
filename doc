@@ -1,0 +1,39 @@
+#!/usr/bin/env bash
+set -eo pipefail
+
+ARG="$1"
+VERSION="0.0.0"
+
+log() {
+    echo "doc: $1" 1>&2
+}
+
+bail() {
+    log "$1"
+    exit 1
+}
+
+eval_docs_path() {
+    if [[ ! -z "${ARG}" ]]; then
+        echo "${ARG}"
+    elif [[ ! -z "${DOCS_PATH}" ]]; then
+        echo "${DOCS_PATH}"
+    elif test -d "$HOME/Documents/"; then
+        echo "$HOME/Documents/"
+    elif test -d "$HOME/docs"; then
+        echo "$HOME/docs"
+    else
+        bail 'ERROR - cannot set $DOCS_PATH'
+    fi
+}
+
+DOCS_PATH="$(eval_docs_path)"
+if ! test -d "$DOCS_PATH"; then
+    bail "ERROR - DOCS_PATH=\"${DOCS_PATH}\" does not exist"
+fi
+
+greeting() {
+    log "version ${VERSION}, DOCS_PATH=\"${DOCS_PATH}\""
+}
+
+greeting

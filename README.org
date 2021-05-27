@@ -1,0 +1,63 @@
+#+TITLE: doc
+#+OPTIONS: toc:nil num:nil
+#+STARTUP: showall noindent inlineimages
+
+Manage your documents with =doc=, powered by trusty old bash.
+
+** Installing
+
+Just a stinky old Makefile, it's not that hard.
+
+#+begin_src bash
+make install
+#+end_src
+
+Run it as root, you crazy fool.
+
+#+begin_src bash
+sudo make install
+#+end_src
+
+Get freaky with symlinks.
+
+#+begin_src bash
+make link
+#+end_src
+
+All done with it?  Uninstall it.
+
+#+begin_src bash
+make uninstall
+#+end_src
+
+Or quit being such a fancy pants and just use a heckin' alias.
+
+#+begin_src bash
+# .bashrc or whatnot
+alias doc='~/src/doc'
+#+end_src
+
+** Configuration
+
+Set the path to your precious documents.
+
+[[file:images/docs-path.png]]
+
+*** COMMENT Docs Path Diagram
+#+begin_src plantuml :file images/docs-path.png
+top to bottom direction
+
+rectangle "Was I invoked with a directory? (e.g. doc $HOME/Dropbox)" as one
+rectangle "Is $DOCS_PATH set?" as two
+rectangle "Does $HOME/Documents exist?" as three
+rectangle "Does $HOME/docs exist?" as four
+circle "ERROR!" as error
+
+one --> two
+two --> three
+three --> four
+four --> error
+#+end_src
+
+#+RESULTS:
+[[file:images/docs-path.png]]
