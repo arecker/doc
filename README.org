@@ -34,7 +34,7 @@ Or quit being such a fancy pants and just use a heckin' alias.
 
 #+begin_src bash
 # .bashrc or whatnot
-alias doc='~/src/doc'
+alias doc='~/src/doc/doc'
 #+end_src
 
 ** Configuration
