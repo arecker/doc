@@ -4,6 +4,13 @@
 
 Manage your documents with =doc=, powered by trusty old bash.
 
+** Dependencies
+
+Sorry this is so bloaty.
+
+- [[https://www.gnu.org/software/bash/][bash]]
+- [[https://git-scm.com/][git]]
+
 ** Installing
 
 Just a stinky old Makefile, it's not that hard.
@@ -24,7 +31,7 @@ Get freaky with symlinks.
 make link
 #+end_src
 
-All done with it?  Uninstall it.
+All done with it?  No biggie, just uninstall it.
 
 #+begin_src bash
 make uninstall
@@ -61,3 +68,11 @@ four --> error
 
 #+RESULTS:
 [[file:images/docs-path.png]]
+
+** Usage
+
+This is totally unexpected, but you run it with your terminal.
+
+#+begin_src bash
+doc
+#+end_src
