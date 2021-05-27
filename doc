@@ -9,7 +9,7 @@ log() {
 }
 
 bail() {
-    log "$1"
+    log "ERROR - $1"
     exit 1
 }
 
@@ -23,17 +23,28 @@ eval_docs_path() {
     elif test -d "$HOME/docs"; then
         echo "$HOME/docs"
     else
-        bail 'ERROR - cannot set $DOCS_PATH'
+        bail 'cannot set $DOCS_PATH'
     fi
 }
 
 DOCS_PATH="$(eval_docs_path)"
 if ! test -d "$DOCS_PATH"; then
-    bail "ERROR - DOCS_PATH=\"${DOCS_PATH}\" does not exist"
+    bail "DOCS_PATH=\"${DOCS_PATH}\" does not exist"
 fi
 
-greeting() {
+greet() {
     log "version ${VERSION}, DOCS_PATH=\"${DOCS_PATH}\""
 }
 
-greeting
+validate() {
+    if ! which git &> /dev/null; then
+        bail 'git not found in $PATH'
+    fi
+
+    if ! test -d "${DOCS_PATH}/.git"; then
+        bail "${DOCS_PATH} exists, but it's not a git directory"
+    fi
+}
+
+greet
+validate
